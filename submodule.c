@@ -1130,6 +1130,15 @@ static int push_submodule(const char *path,
 	if (for_each_remote_ref_submodule(path, has_remote, NULL) > 0) {
 		struct child_process cp = CHILD_PROCESS_INIT;
 		strvec_push(&cp.args, "push");
+		/*
+		 * If this function is called, it is because the user
+		 * requested recursion through
+		 * --recurse-submodules=on-demand or
+		 * --recurse-submodules=only (or the equivalent
+		 * config). In both cases, we should fully recurse into
+		 * all submodules and their descendants.
+		 */
+		strvec_push(&cp.args, "--recurse-submodules=on-demand");
 		if (dry_run)
 			strvec_push(&cp.args, "--dry-run");
 
