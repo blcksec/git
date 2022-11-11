@@ -407,7 +407,7 @@ Specifying `--no-force-if-includes` disables this behavior.
 	remote of the submodule. If any commits are missing the push will
 	be aborted and exit with non-zero status. If 'on-demand' is used
 	all submodules that changed in the revisions to be pushed will be
-	pushed. If on-demand was not able to push all necessary revisions it will
+	recursively pushed. If on-demand was not able to push all necessary revisions it will
 	also be aborted and exit with non-zero status. If 'only' is used all
 	submodules will be recursively pushed while the superproject is left
 	unpushed. A value of 'no' or using `--no-recurse-submodules` can be used
